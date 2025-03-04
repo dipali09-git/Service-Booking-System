@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BooknServe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/home.css}"> <!-- Link to custom CSS -->
+    <script>
+        function showAboutUs() {
+            document.getElementById("about").scrollIntoView({behavior: 'smooth'});
+        }
+        
+        function showHome() {
+            document.getElementById("home").scrollIntoView({behavior: 'smooth'});
+        }
+    </script>
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 90px; /* Decreased height */
+            padding: 5px 0; /* Adjusted padding */
+        }
+        .navbar-brand img {
+            width: 80px; /* Decreased logo size */
+        }
+        body {
+            padding-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar/Header -->
+    <nav class="navbar navbar-expand-lg" style="background-color: black;">
+        <div class="container-fluid">
+            <!-- Left Side: Logo & Website Name -->
+            <a class="navbar-brand text-white d-flex align-items-center" th:href="@{/}">
+                <img th:src="@{/images/bnserve.webp}" alt="Logo" style="margin-right: 20px;">
+                <b>BooknServe</b>
+            </a>
+            
+            <!-- Right Side: Navigation Links -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" onclick="showHome()">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#" onclick="showAboutUs()">AboutUs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/home/register}">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="home" class="container text-center mt-5">
+        <h1>Welcome to BooknServe</h1>
+        <p>Your one-stop platform for booking services.</p>
+        <img th:src="@{/images/servicehome.webp}" alt="Booking" class="img-fluid mt-4" style="max-width: 80%; border-radius: 10px;">
+    </div>
+
+    <!-- About Us Section -->
+    <section id="about" class="aboutus" style="width: 100%; background-color: #f8f9fa; padding: 50px 0;">
+      <div style="width: 90%; margin: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: center;">
+        <!-- Left Column: Headings and Paragraph -->
+        <div style="width: 50%; text-align: left;">
+          <h1 style="text-align: center; margin-left:400px;color: #fca311;"><b>BooknServe</b></h1>
+          <h2 style="margin-top: 50px;">GET TO KNOW</h2>
+          <p style="font-size: 1.3em; line-height: 1.8; font-weight: 500;">
+            <b>Welcome to BooknServe</b>, your trusted platform for booking professional services with ease.  
+            Whether you need <b>home repairs, cleaning, or more</b>, we connect you with <b>verified experts</b> instantly.  
+            <br><br>
+            At <b>BooknServe</b>, we make service booking <b>seamless and hassle-free</b>. Our platform ensures 
+            <b>secure payments</b>, <b>top-quality service</b>, and a <b>smooth user experience</b>.  
+            <br><br>
+            Enjoy the convenience of professional services at your fingertips.  
+            <br><br>
+            <b style="display: block; font-size: 1.6em; text-align: center;">Book. Relax. Get it done!</b>
+          </p>
+        </div>
+        <!-- Right Column: Image -->
+        <div style="width: 45%; text-align: center;">
+          <img th:src="@{/images/serviceaboutus.webp}" style="width: 100%; border-radius: 50%; object-fit: cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-3 mt-5">
+        <div class="container text-center" style="background-color: gray;">
+            <p style="color:black;">&copy; 2025 BooknServe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

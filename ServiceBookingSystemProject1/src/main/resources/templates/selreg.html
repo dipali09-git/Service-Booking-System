@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Booking System - Registration</title>
+  <style>
+    /* Full Page Styling */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    /* Centered Container */
+    .container {
+      background: rgba(255, 255, 255, 0.1); /* Transparent White */
+      padding: 40px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-width: 500px;
+      backdrop-filter: blur(10px); /* Glassmorphism Effect */
+    }
+    h2 {
+      margin-bottom: 15px;
+      font-size: 26px;
+      color: black;
+    }
+    p {
+      color: gray;
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+    /* Button Styling */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      text-align: center;
+      border: none;
+      background-color: #48AAAD; /* Bright Blue Button */
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+    .btn:hover {
+      background-color: dimgray;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome to BooknServe</h2>
+    <p>Choose your user type to get started:</p>
+    <!-- This button now correctly navigates to /register/company -->
+    <button class="btn" th:onclick="|window.location.href='@{/companies/register}'|">Register as a Company</button>
+    <button class="btn" th:onclick="|window.location.href='@{/users/register}'|">Register as a User</button>
+  </div>
+</body>
+</html>

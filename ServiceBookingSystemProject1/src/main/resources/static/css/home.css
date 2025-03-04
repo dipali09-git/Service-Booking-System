@@ -1,0 +1,166 @@
+/* home.css */
+
+/* Define color and font variables for consistency */
+:root {
+    --primary-color: #000;
+    --secondary-color: #f8f9fa;
+    --accent-color: #fca311;
+    --text-color: #555;
+    --heading-color: #333;
+    --navbar-bg: #000;
+    --footer-bg: #fff;
+    --footer-text: blueviolet;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    padding: 0.5rem 1rem;
+    background-color: var(--navbar-bg);
+}
+
+.navbar-brand {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.navbar-brand:hover {
+    color: var(--accent-color);
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.1rem;
+    margin-left: 15px;
+    transition: color 0.3s ease-in-out;
+    color: var(--secondary-color);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Main Content Headings and Paragraphs */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+/* About Us Section Styles */
+.aboutus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--secondary-color);
+    padding: 60px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.aboutus .about-text {
+    flex: 2;
+    padding: 20px;
+    text-align: left;
+}
+
+.aboutus .about-text h1 {
+    color: var(--heading-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.aboutus .about-text p {
+    color: var(--text-color);
+    font-size: 1.1em;
+    max-width: 600px;
+}
+
+.aboutus .about-image {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.aboutus .about-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.aboutus .about-image img:hover {
+    transform: scale(1.05);
+}
+/* Override the first h1 inside the .aboutus section to align left */
+.aboutus h1:first-of-type {
+    text-align: left;
+}
+
+/* Ensure the second h1 remains centered */
+.aboutus h1:last-of-type {
+    text-align: center;
+}
+
+
+
+/* Footer Styles */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .aboutus {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 10px;
+    }
+    .aboutus .about-text, 
+    .aboutus .about-image {
+        padding: 10px;
+    }
+    .aboutus .about-text {
+        order: 2;
+    }
+    .aboutus .about-image {
+        order: 1;
+        margin-bottom: 20px;
+    }
+}

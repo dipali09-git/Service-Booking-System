@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Ads</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Card styling */
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            margin-top:70px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        /* Image styling within card */
+        .card img {
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        /* Details container: limit the width of service details */
+        .details-container {
+            max-width: 400px;
+        }
+        /* Custom styling for Back button (optional) */
+        .btn btn-secondary back-btn {
+      margin-left: -40px;
+      margin-top: -500px;
+      background-color: blue;
+      color: white; /* Ensure text is visible */
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+     
+     
+    }
+    .btn btn-secondary back-btn:hover {
+      background-color: gray;
+    }
+    </style>
+</head>
+<body>
+<!-- Container for the entire page -->
+<div class="container mt-4">
+    <h2 class="text-center mb-4"style="margin-top:60px;'">Manage Your Ads</h2>
+    <!-- Back to Dashboard Button -->
+    <a th:href="@{/companies/dashboard}" class="btn btn-secondary back-btn">Back To Dashboard</a>
+
+    <!-- Toast container (top-right) for success/error messages -->
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 9999">
+        <!-- Success Toast -->
+        <div th:if="${success}" class="toast show align-items-center text-bg-success border-0 mb-2" 
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" th:text="${success}"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+                        data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        <!-- Error Toast -->
+        <div th:if="${error}" class="toast show align-items-center text-bg-danger border-0 mb-2" 
+             role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" th:text="${error}"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+                        data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loop through each ad -->
+    <div th:each="ad : ${services}" class="card">
+        <div class="row g-0">
+            <!-- Image on the left -->
+            <div class="col-md-4">
+                <img th:src="@{'/images/' + ${ad.imageFileName}}"
+                     class="img-fluid rounded-start"
+                     alt="Service Image"
+                     style="height: 100%; object-fit: cover;">
+            </div>
+            <!-- Card body on the right -->
+            <div class="col-md-8">
+                <div class="card-body details-container">
+                    <h5 class="card-title" th:text="${ad.serviceName}">Service Name</h5>
+                    <p class="card-text">
+                        <strong>Price:</strong> <span th:text="${ad.price}">0</span><br>
+                        <strong>Description:</strong> <span th:text="${ad.description}">N/A</span>
+                    </p>
+                    <a th:href="@{/companies/updateAd(serviceId=${ad.serviceId})}"
+                       class="btn btn-warning me-2">
+                        Update
+                    </a>
+                    <form th:action="@{/companies/deleteAd(serviceId=${ad.serviceId})}" method="post" style="display:inline;">
+                        <input type="hidden" name="adId" th:value="${ad.serviceId}">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+
+<!-- Bootstrap JS Bundle (for the toasts) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
